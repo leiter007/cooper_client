@@ -10,7 +10,7 @@ const LoginForm = (props) => {
 
       <div>
         <label>Password</label>
-        <input id="password" onChange={props.inputChangeHandler}>></input>
+        <input id="password" onChange={props.inputChangeHandler}></input>
       </div>
       <button onClick={(e) => props.loginHandler(e)} id="submit">Submit</button>
     </form>
