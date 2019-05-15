@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class App extends Component {
   render() {
-      return (
+    return (
       <div>
         <div>
           <label>Distance</label>
@@ -19,8 +19,8 @@ class App extends Component {
           <input id="age"></input>
         </div>
       </div>
-      );
-    }
+    );
+  }
 }
 
 export default App;
