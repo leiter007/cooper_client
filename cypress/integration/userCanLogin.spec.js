@@ -5,7 +5,7 @@ describe('User can log in', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/auth/sign_in',
-      response: 'fixture:login.json',
+      response: 'fixture:login_valid.json',
       headers: {
         "uid": "user@mail.com"
       }
@@ -26,13 +26,8 @@ describe('User can log in', () => {
       method: 'POST',
       url: 'http://localhost:3000/api/v1/auth/sign_in',
       status: "401",
-      response: {
-        "errors": [
-          "Invalid login credentials. Please try again."
-        ],
-        "success": false
-      }     
-    })
+      response: 'fixture:login_invalid.json'
+    })     
     cy.get('#login').click();
     cy.get('#login-form').within(() => {
       cy.get('#email').type('user@mail.com')
