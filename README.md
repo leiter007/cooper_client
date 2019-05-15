@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Title
 
-## Available Scripts
+`The Cooper Test Challenge`
 
-In the project directory, you can run:
+Craft Academy - week 7 out of 12
 
-### `npm start`
+May 2019
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Problem Statement
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+We have a client request to build a fitness tracking application. The idea is that the app will allow users to track their condition using a specific test called The Cooper Test.
 
-### `npm test`
+The challenge is to build a software solution that will make it possible not to only make the calculation, but to record the data over time. Another requirement is that the app should have functionality that presents historical data of tests if a user has saved any historical data.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# History
 
-### `npm run build`
+The Cooper Test (aka The 12-minute run) was developed by Dr. Ken Cooper in 1968 as an easy way to measure aerobic fitness and provide an estimate of VO2 max for military personnel. The Cooper test, as it's also known, is still used today as a field test for determining aerobic fitness.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dr. Cooper found that there is a very high correlation between the distance someone can run (or walk) in 12 minutes and their VO2 max value, which measures the efficiency with which someone can use oxygen while exercising. This test is still one of the basic fitness tests used by the military. It is also used by many coaches and trainers to determine cardiovascular fitness and track fitness over time. This simple test also allows you to compare your cardiovascular endurance with others of your age and gender.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+# Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For the pusrposes of this project we built a backend API solution using Ruby on Rails and a frontend client solution using React. The repositories where the code is available are the following:
+* **Leiter007** [API](https://github.com/leiter007/cooper_api), [Client](https://github.com/leiter007/cooper_client)
+* **Raptorf1** [API](https://github.com/raptorf1/cooper_api), [Client](https://github.com/raptorf1/cooper_client)
 
-### `npm run eject`
+# Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You must have `Ruby`, `Ruby on Rails`, `Node.js`, `Bundler` and `PostgreSQL` installed in your system to be able to view this app and run all feature, unit and acceptance tests. After forking the repository run `bundle install` so that you download all the gems used in the project.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Installing
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* To fire up the rails API server, first you will have to create and migrate the databases. To do that, you run in your terminal `rails db:create` and `rails db:migrate`. For the server to activate, run `rails server` in your terminal.
+* To fire up the react client, run `npm start` in your terminal.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Running the tests
 
-## Learn More
+* The API was unit tested using Rspec. To run the tests in your terminal use `bundle exec rspec`.
+* The client was tested using Cypress and Enzyme. To run the acceptance tests of Cypress use `npm run cy:open`. To run the react component Enzyme tests use `npm run test`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Built With
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [Ruby version 2.4.1](https://www.ruby-lang.org/en/)
+* [Ruby on Rails version 5.2.0](https://rubyonrails.org/)
+* [React](https://reactjs.org/)
 
-### Code Splitting
+# Tested With
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* [Rspec - Behvavior Driven Development for Ruby](https://rspec.info/)
+* [Cypress - a complete end-to-end testing experience](https://www.cypress.io/) 
+* [Jest & Enzyme testing frameworks for React](https://www.npmjs.com/package/jest-enzyme)
 
-### Analyzing the Bundle Size
+# Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* **Leiter007** - [GitHub](https://github.com/leiter007) - [Portfolio](https://felix-react-portfolio.netlify.com/)
+* **Raptorf1** - [GitHub](https://github.com/raptorf1) - [Portfolio](https://gtomaras-portfolio.netlify.com/)
 
-### Making a Progressive Web App
+# License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
-### Advanced Configuration
+# Acknowledgments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* [PurpleBooth](https://github.com/PurpleBooth) for this README template.
