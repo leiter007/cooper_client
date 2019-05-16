@@ -19,7 +19,7 @@ class App extends Component {
       message: '',
       entrySaved: false,
       renderIndex: false,
-      // updateIndex: false
+      updateIndex: ''
     }
   }
 
