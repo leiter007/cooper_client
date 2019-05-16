@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
-import { authenticate } from './Modules/Auth';
+import { authenticate } from './Modules/Auth.js';
 
 class App extends Component {
   constructor(props) {
@@ -36,8 +36,9 @@ class App extends Component {
 
   onChange(event) {
     this.setState({
-      [event.target.id]: event.target.value
-    });
+      [event.target.id]: event.target.value,
+      entrySaved: false
+    })
   }
 
   render() {
