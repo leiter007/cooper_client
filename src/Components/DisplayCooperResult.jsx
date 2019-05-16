@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CooperCalculator from '../Modules/CooperCalculator';
+import {saveData} from '../Modules/PerformanceData';
 
 class DisplayCooperResult extends Component {
 
@@ -34,6 +35,7 @@ class DisplayCooperResult extends Component {
         <>
           <p>{this.props.age} y/o {this.props.gender} running {this.props.distance} meters.</p>
           <p>Result: {this.calculate()}</p>
+          {saveButton}
         </>
     }
     return (
