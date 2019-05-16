@@ -18,7 +18,8 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      // updateIndex: false
     }
   }
 
@@ -33,7 +34,11 @@ class App extends Component {
   }
 
   entryHandler() {
-    this.setState({ entrySaved: true });
+    this.setState({ entrySaved: true, updateIndex: true });
+  }
+
+  indexUpdated() {
+    this.setState({ updateIndex: false });
   }
 
   onChange(event) {
@@ -58,7 +63,7 @@ class App extends Component {
           <>
             <DisplayPerformanceData
               updateIndex={this.state.updateIndex}
-              indexUpated={this.indexUpated.bind(this)}
+              indexUpdated={this.indexUpdated.bind(this)}
             />
             <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
           </>
