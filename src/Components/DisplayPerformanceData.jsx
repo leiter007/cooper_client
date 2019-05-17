@@ -23,13 +23,28 @@ class DisplayPerformanceData extends Component {
 
   render () {
     let dataIndex;
-    let data = {
+    let distances = []
+    let labels = []
+
+    if (this.state.performanceData != null) {
+    this.state.performanceData.forEach(entry => {
+      distances.push(entry.data.distance)
+      labels.push(entry.created_at)
+    })
+  }
+
+    let lineChartData = {
         datasets: [{
           label: 'Distance over time',
-          data: [65, 59, 80, 81, 56, 55],
+          data: distances,
         }],
-        labels: ["one", "two", "three", "four", "five", "six"]
+        labels: labels
       };
+
+    let lineChartOptions = {
+      scaleOverride : true,
+      scaleStartValue : 0,
+    }
 
     if (this.props.updateIndex === true) {
       this.getPerformanceData();
@@ -54,7 +69,7 @@ class DisplayPerformanceData extends Component {
       </Segment>
 
       <Line
-        data={data}
+        data={lineChartData} options={lineChartOptions}
       />
       
       </>
