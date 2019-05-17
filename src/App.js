@@ -3,7 +3,8 @@ import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth.js';
-import DisplayPerformanceData from './Components/DisplayPerformanceData'
+import DisplayPerformanceData from './Components/DisplayPerformanceData';
+import { Container, Divider, Header, Segment, Button } from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,10 @@ class App extends Component {
     this.setState({ updateIndex: false });
   }
 
+  handleGenderChange(value) {
+		this.setState({ gender: value})
+  }
+  
   onChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
@@ -65,12 +70,12 @@ class App extends Component {
               updateIndex={this.state.updateIndex}
               indexUpdated={this.indexUpdated.bind(this)}
             />
-            <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+            <Button compact color="teal" onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
           </>
         )
       } else {
         performanceDataIndex = (
-          <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+          <Button compact color="teal" id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
         )
       }
     } else {
@@ -86,7 +91,7 @@ class App extends Component {
       } else {
         renderLogin = (
           <>
-            <button id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</button>
+            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
             <p>{this.state.message}</p>
           </>
         )
@@ -95,22 +100,35 @@ class App extends Component {
 
     return (
       <>
+        <Container>
+							<Header as="h1"textAlign="center">THE COOPER TEST</Header>
+                <Divider horizontal >!</Divider>
+                
+							<Segment>
+                <InputFields
+                  inputChangeHandler={this.onChange.bind(this)}
+                  handleGenderChange={this.handleGenderChange.bind(this)}
+                />
+              </Segment>
 
-        <InputFields
-          inputChangeHandler={this.onChange.bind(this)}
-        />
+              <Divider horizontal>Wait for you physical assessment...</Divider>
+              
+              <Segment>
+                <DisplayCooperResult
+                  distance={this.state.distance}
+                  gender={this.state.gender}
+                  age={this.state.age}
+                  authenticated={this.state.authenticated}
+                  entrySaved={this.state.entrySaved}
+                  entryHandler={this.entryHandler.bind(this)}
+                />
+              </Segment>
 
-        <DisplayCooperResult
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
-        {renderLogin}
-        {performanceDataIndex}
-
+              <Segment>
+                {renderLogin}
+                {performanceDataIndex}
+              </Segment>
+        </Container>
       </>
     );
   }
