@@ -4,7 +4,7 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth.js';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
-import { Container, Divider, Header, Segment, Button } from 'semantic-ui-react'
+import { Container, Divider, Header, Segment, Button, Message } from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
@@ -101,33 +101,39 @@ class App extends Component {
     return (
       <>
         <Container>
-							<Header as="h1"textAlign="center">THE COOPER TEST</Header>
-                <Divider horizontal >!</Divider>
-                
-							<Segment>
-                <InputFields
-                  inputChangeHandler={this.onChange.bind(this)}
-                  handleGenderChange={this.handleGenderChange.bind(this)}
-                />
-              </Segment>
+            <Header as="h1" textAlign="center">THE COOPER TEST</Header>
+              <Divider></Divider>
 
-              <Divider horizontal>Wait for you physical assessment...</Divider>
-              
-              <Segment>
-                <DisplayCooperResult
-                  distance={this.state.distance}
-                  gender={this.state.gender}
-                  age={this.state.age}
-                  authenticated={this.state.authenticated}
-                  entrySaved={this.state.entrySaved}
-                  entryHandler={this.entryHandler.bind(this)}
-                />
-              </Segment>
-
-              <Segment>
+              <Message>
                 {renderLogin}
-                {performanceDataIndex}
-              </Segment>
+              </Message>
+  
+            <Segment>
+              <InputFields
+                inputChangeHandler={this.onChange.bind(this)}
+                handleGenderChange={this.handleGenderChange.bind(this)}
+              />
+            </Segment>
+
+            <Divider horizontal>Wait for you physical assessment...</Divider>
+            
+            <Segment>
+              <Message color="teal">
+              <DisplayCooperResult
+                distance={this.state.distance}
+                gender={this.state.gender}
+                age={this.state.age}
+                authenticated={this.state.authenticated}
+                entrySaved={this.state.entrySaved}
+                entryHandler={this.entryHandler.bind(this)}
+              />
+              </Message>
+            </Segment>
+            
+            <Divider horizontal>Results</Divider>
+            <Segment>
+              {performanceDataIndex}
+            </Segment>
         </Container>
       </>
     );
