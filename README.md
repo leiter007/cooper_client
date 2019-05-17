@@ -24,6 +24,13 @@ For the pusrposes of this project we built a backend API solution using Ruby on 
 * **Leiter007** [API](https://github.com/leiter007/cooper_api), [Client](https://github.com/leiter007/cooper_client)
 * **Raptorf1** [API](https://github.com/raptorf1/cooper_api), [Client](https://github.com/raptorf1/cooper_client)
 
+# Deployment
+
+* The API was deployed using Heroku. The link to access it is [here](https://cooper-felix-george.herokuapp.com/). Since this is only an API interface there are no views. So when you hit the link above do not expect to see something in your browser.
+* The CLIENT was deployed via Netlify. You can visit it [here](https://cooper-felix-george.netlify.com/). This is where everything happens.
+
+Please be patient while the client loads. Since both services are hosted on free servers, the speed is not as instant as you might be used to.
+
 # Prerequisites
 
 You must have `Ruby`, `Ruby on Rails`, `Node.js`, `Bundler` and `PostgreSQL` installed in your system to be able to view this app and run all feature, unit and acceptance tests. After forking the repository run `bundle install` so that you download all the gems used in the project.
