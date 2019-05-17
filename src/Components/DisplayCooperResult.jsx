@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CooperCalculator from '../Modules/CooperCalculator';
 import {saveData} from '../Modules/PerformanceData';
-import { Button } from 'semantic-ui-react'
+import { Button, Message } from 'semantic-ui-react'
 
 class DisplayCooperResult extends Component {
 
@@ -32,7 +32,9 @@ class DisplayCooperResult extends Component {
     } else if (this.props.authenticated === true && this.props.entrySaved === true) {
       saveButton = (
         <>
-          <p>Your entry was saved</p>
+          <Message>
+            <p>Your entry was saved</p>
+          </Message>
         </>
       )
     }

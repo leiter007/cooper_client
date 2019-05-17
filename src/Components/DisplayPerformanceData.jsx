@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
+import { Message } from 'semantic-ui-react'
 
 class DisplayPerformanceData extends Component {
   constructor(props) {
@@ -36,9 +37,9 @@ class DisplayPerformanceData extends Component {
     }
 
     return (
-      <div>
+      <Message>
         {dataIndex}
-      </div>
+      </Message>
     )
   }      
 }
