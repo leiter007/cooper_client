@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
-import { Message } from 'semantic-ui-react'
+import { Message, Segment, Divider } from 'semantic-ui-react'
+import { Line } from 'react-chartjs-2';
 
 class DisplayPerformanceData extends Component {
   constructor(props) {
@@ -22,6 +23,13 @@ class DisplayPerformanceData extends Component {
 
   render () {
     let dataIndex;
+    let data = {
+        datasets: [{
+          label: 'Distance over time',
+          data: [65, 59, 80, 81, 56, 55],
+        }],
+        labels: ["one", "two", "three", "four", "five", "six"]
+      };
 
     if (this.props.updateIndex === true) {
       this.getPerformanceData();
@@ -37,9 +45,19 @@ class DisplayPerformanceData extends Component {
     }
 
     return (
-      <Message>
-        {dataIndex}
-      </Message>
+      <>
+      <Divider horizontal>Distance and Result log</Divider>
+        <Segment>
+         <Message>
+          {dataIndex}
+        </Message>
+      </Segment>
+
+      <Line
+        data={data}
+      />
+      
+      </>
     )
   }      
 }

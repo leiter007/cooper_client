@@ -130,10 +130,8 @@ class App extends Component {
               </Message>
             </Segment>
             
-            <Divider horizontal>Results</Divider>
-            <Segment>
               {performanceDataIndex}
-            </Segment>
+           
         </Container>
       </>
     );
