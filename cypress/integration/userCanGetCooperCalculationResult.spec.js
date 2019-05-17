@@ -2,7 +2,7 @@ describe('Cooper Client calculates successfully', () => {
   before(function() {
     cy.visit('http://localhost:3001');
     cy.get('input[id="distance"]').type('1000')
-    cy.get('selector[id="gender"]').select('female')
+    cy.get('div[id="gender"]').click().get('div[role="option"]').contains('Female')
     cy.get('input[id="age"]').type('23')
   })
 
