@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
-import { Message, Segment, Divider } from 'semantic-ui-react'
-import { Line } from 'react-chartjs-2';
+import { Message, Segment, Divider, Grid } from 'semantic-ui-react'
+import { Line, Bar } from 'react-chartjs-2';
 import moment from 'moment';
 
 class DisplayPerformanceData extends Component {
@@ -25,15 +25,28 @@ class DisplayPerformanceData extends Component {
   render() {
     let dataIndex;
     let distances = []
-    let labels = []
+    let dates = []
+    let numOfExcellent = 0
 
+    let barChartData = {
+      datasets: [{
+        label: 'Performance Status',
+        data: [
+          {x: "Excellent", y: numOfExcellent},
+          {x: "Above average", y: numOfExcellent},
+          {x: "Average", y: numOfExcellent},
+          {x: "Below average", y: numOfExcellent},
+          {x: "Poor", y: numOfExcellent},
+        ],
+      }]
+    };
 
     let lineChartData = {
-      datasets: [{
-        label: 'Distance over time',
-        data: distances,
+        datasets: [{
+          label: 'Distance over time',
+          data: distances,
       }],
-      labels: labels
+      labels: dates
     };
 
     let lineChartOptions = {
@@ -59,7 +72,7 @@ class DisplayPerformanceData extends Component {
         let momentObj = moment(dateObj);
         let momentString = momentObj.format('YYYY-MM-DD');
         distances.push(entry.data.distance);
-        labels.push(momentString);
+        dates.push(momentString);
       })
 
 
@@ -81,10 +94,15 @@ class DisplayPerformanceData extends Component {
           </Message>
         </Segment>
 
-        <Line
-          data={lineChartData}
-          options={lineChartOptions}
-        />
+  
+            <Line
+              data={lineChartData}
+              options={lineChartOptions}
+            />
+          <Bar
+            // data={barChartData}
+            // options={barChartOptions}
+          />
 
       </>
     )
