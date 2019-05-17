@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
-import { Message, Segment, Divider } from 'semantic-ui-react'
+import { Message, Segment, Divider, Grid } from 'semantic-ui-react'
 import { Line, Bar } from 'react-chartjs-2';
 import moment from 'moment';
 
@@ -156,15 +156,20 @@ class DisplayPerformanceData extends Component {
           </Message>
         </Segment>
 
-        <Line
-          data={lineChartData}
-          options={lineChartOptions}
-        />
-
-        <Bar
-          data={barChartData}
-          options={barChartOptions}
-        />
+        <Grid container columns={2}>
+          <Grid.Column>
+            <Line
+              data={lineChartData}
+              options={lineChartOptions}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <Bar
+              data={barChartData}
+              options={barChartOptions}
+            />
+          </Grid.Column>
+        </Grid>
 
       </>
     )
