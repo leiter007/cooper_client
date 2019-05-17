@@ -54,25 +54,20 @@ class DisplayPerformanceData extends Component {
           'rgba(255, 159, 64, 1)'
         ],
         borderWidth: 1
-      }],
-      options: {
-        responsive: false,
-        scales: {
-          xAxes: [{
-            ticks: {
-              maxRotation: 90,
-              minRotation: 80
-            }
-          }],
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              min: 0
-            }
-          }]
-        }
+      }]
+    }
+
+    let barChartOptions = {
+      responsive: true,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: 0
+          }
+        }]
       }
-    };
+    }
 
     let lineChartData = {
       datasets: [{
@@ -92,7 +87,6 @@ class DisplayPerformanceData extends Component {
         }]
       }
     }
-
 
     if (this.props.updateIndex === true) {
       this.getPerformanceData();
@@ -162,14 +156,14 @@ class DisplayPerformanceData extends Component {
           </Message>
         </Segment>
 
-
         <Line
           data={lineChartData}
           options={lineChartOptions}
         />
+
         <Bar
           data={barChartData}
-        // options={barChartOptions}
+          options={barChartOptions}
         />
 
       </>
