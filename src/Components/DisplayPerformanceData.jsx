@@ -32,6 +32,9 @@ class DisplayPerformanceData extends Component {
     let numOfBelowAverage;
     let numOfPoor;
     let barChartPerfData = []
+    let perfDataLength;
+    let totalM;
+    let totalKLM;
 
     let barChartData = {
       labels: ["Excellent", "Above Average", "Average", "Below Average", "Poor"],
@@ -145,6 +148,13 @@ class DisplayPerformanceData extends Component {
           })}
         </div>
       )
+
+      perfDataLength = this.state.performanceData.length;
+
+      totalM = distances.reduce(function (prev, curr) {
+        return (Number(prev) || 0) + (Number(curr) || 0);
+      });
+      totalKLM = (totalM / 1000).toFixed(2)
     }
 
     return (
@@ -155,6 +165,8 @@ class DisplayPerformanceData extends Component {
             {dataIndex}
           </Message>
         </Segment>
+
+        <Divider horizontal>You have run a total of {totalKLM} kilometers and have {perfDataLength} saved entries</Divider>
 
         <Grid container columns={2}>
           <Grid.Column>
