@@ -42,6 +42,10 @@ class App extends Component {
     this.setState({ updateIndex: false });
   }
 
+  handleGenderChange(value) {
+		this.setState({ gender: value})
+  }
+  
   onChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
@@ -97,17 +101,18 @@ class App extends Component {
     return (
       <>
         <Container>
-							<Header as="h1"textAlign="center">
-                <Divider horizontal >THE COOPER TEST</Divider>
-							</Header>
-              
-
+							<Header as="h1"textAlign="center">THE COOPER TEST</Header>
+                <Divider horizontal >!</Divider>
+                
 							<Segment>
                 <InputFields
                   inputChangeHandler={this.onChange.bind(this)}
+                  handleGenderChange={this.handleGenderChange.bind(this)}
                 />
               </Segment>
 
+              <Divider horizontal>Wait for you physical assessment...</Divider>
+              
               <Segment>
                 <DisplayCooperResult
                   distance={this.state.distance}
