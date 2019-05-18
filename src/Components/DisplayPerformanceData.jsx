@@ -35,6 +35,8 @@ class DisplayPerformanceData extends Component {
     let perfDataLength;
     let totalM;
     let totalKLM;
+    let mostFrequentPerfIndex;
+    let mostFrequentPerformance;
 
     let barChartData = {
       labels: ["Excellent", "Above Average", "Average", "Below Average", "Poor"],
@@ -153,7 +155,7 @@ class DisplayPerformanceData extends Component {
       barChartPerfData.push(numOfAverage);
       barChartPerfData.push(numOfBelowAverage);
       barChartPerfData.push(numOfPoor);
-
+  
       dataIndex = (
         <div>
           {this.state.performanceData.map(item => {
@@ -161,13 +163,29 @@ class DisplayPerformanceData extends Component {
           })}
         </div>
       )
-
+      
       perfDataLength = this.state.performanceData.length;
 
       totalM = distances.reduce(function (prev, curr) {
         return (Number(prev) || 0) + (Number(curr) || 0);
       });
       totalKLM = (totalM / 1000).toFixed(2)
+      
+      mostFrequentPerfIndex = barChartPerfData.indexOf(Math.max(...barChartPerfData))
+      if(mostFrequentPerfIndex === 0) {
+        mostFrequentPerformance = "Excellent"
+      } else if (mostFrequentPerfIndex === 1) {
+        mostFrequentPerformance = "Above Average"
+      } else if (mostFrequentPerfIndex === 2) {
+        mostFrequentPerformance = "Average"
+      } else if (mostFrequentPerfIndex === 3) {
+        mostFrequentPerformance = "Below Average"
+      } else if (mostFrequentPerfIndex === 4) {
+        mostFrequentPerformance = "Poor"
+      } else {
+        mostFrequentPerformance = "is still to be discovered"
+      }
+
     }
 
     const bubbleStyle = { width: 200, height: 80 }
@@ -221,7 +239,7 @@ class DisplayPerformanceData extends Component {
                   <Divider></Divider>
                   <Segment circular inverted style={bubbleStyle} color="teal">
                     <Header as='h1'>
-                    {perfDataLength}
+                    {mostFrequentPerformance}
                     </Header>
                   </Segment>
               </Segment>
