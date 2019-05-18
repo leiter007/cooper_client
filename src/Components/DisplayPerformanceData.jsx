@@ -69,7 +69,7 @@ class DisplayPerformanceData extends Component {
         display: true,
         text: 'Performance Status',
         fontSize: 16
-        },
+      },
       scales: {
         yAxes: [{
           ticks: {
@@ -95,7 +95,7 @@ class DisplayPerformanceData extends Component {
         display: true,
         text: 'Distance over time',
         fontSize: 16
-        },
+      },
       scales: {
         yAxes: [{
           ticks: {
@@ -155,7 +155,7 @@ class DisplayPerformanceData extends Component {
       barChartPerfData.push(numOfAverage);
       barChartPerfData.push(numOfBelowAverage);
       barChartPerfData.push(numOfPoor);
-  
+
       dataIndex = (
         <div>
           {this.state.performanceData.map(item => {
@@ -163,16 +163,16 @@ class DisplayPerformanceData extends Component {
           })}
         </div>
       )
-      
+
       perfDataLength = this.state.performanceData.length;
 
       totalM = distances.reduce(function (prev, curr) {
         return (Number(prev) || 0) + (Number(curr) || 0);
       });
       totalKLM = (totalM / 1000).toFixed(2)
-      
+
       mostFrequentPerfIndex = barChartPerfData.indexOf(Math.max(...barChartPerfData))
-      if(mostFrequentPerfIndex === 0) {
+      if (mostFrequentPerfIndex === 0) {
         mostFrequentPerformance = "Excellent"
       } else if (mostFrequentPerfIndex === 1) {
         mostFrequentPerformance = "Above Average"
@@ -194,20 +194,20 @@ class DisplayPerformanceData extends Component {
       <>
         <Divider horizontal>
           <Header as="h3">
-          RESULT DASHBOARD
+            RESULT DASHBOARD
           </Header>
         </Divider>
 
         <Segment>
           <Grid container columns={2}>
             <Grid.Column>
-                <Message>
+              <Message>
                 <Header as="h3">
                   Result log
                 </Header>
                 <Divider></Divider>
-                  {dataIndex}
-                </Message>
+                {dataIndex}
+              </Message>
             </Grid.Column>
 
             <Grid.Column>
@@ -215,33 +215,33 @@ class DisplayPerformanceData extends Component {
                 <Header textAlign="right" as='h3'>
                   Your total distance covered is
                 </Header>
-                  <Divider></Divider>
-            
-                    <Segment circular inverted style={bubbleStyle} color="teal">
-                      <Header as='h1'>
-                        {totalKLM}km
+                <Divider></Divider>
+
+                <Segment circular inverted style={bubbleStyle} color="teal">
+                  <Header as='h1'>
+                    {totalKLM}km
                       </Header>
-                    </Segment>
+                </Segment>
 
-                  <Header textAlign="right" as='h3'>
-                    Your total number of runs is
+                <Header textAlign="right" as='h3'>
+                  Your total number of runs is
                   </Header>
-                  <Divider></Divider>
-                  <Segment circular inverted style={bubbleStyle} color="teal">
-                    <Header as='h1'>
+                <Divider></Divider>
+                <Segment circular inverted style={bubbleStyle} color="teal">
+                  <Header as='h1'>
                     {perfDataLength}
-                    </Header>
-                  </Segment>
-
-                  <Header textAlign="right" as='h3'>
-                    Your most frequent result is
                   </Header>
-                  <Divider></Divider>
-                  <Segment circular inverted style={bubbleStyle} color="teal">
-                    <Header as='h1'>
+                </Segment>
+
+                <Header textAlign="right" as='h3'>
+                  Your most frequent result is
+                  </Header>
+                <Divider></Divider>
+                <Segment circular inverted style={bubbleStyle} color="teal">
+                  <Header as='h1'>
                     {mostFrequentPerformance}
-                    </Header>
-                  </Segment>
+                  </Header>
+                </Segment>
               </Segment>
 
             </Grid.Column>
@@ -249,20 +249,20 @@ class DisplayPerformanceData extends Component {
         </Segment>
 
         <Segment>
-        <Grid container columns={2}>
-          <Grid.Column>
-            <Line
-              data={lineChartData}
-              options={lineChartOptions}
-            />
-          </Grid.Column>
-          <Grid.Column>
-            <Bar
-              data={barChartData}
-              options={barChartOptions}
-            />
-          </Grid.Column>
-        </Grid>
+          <Grid container columns={2}>
+            <Grid.Column>
+              <Line
+                data={lineChartData}
+                options={lineChartOptions}
+              />
+            </Grid.Column>
+            <Grid.Column>
+              <Bar
+                data={barChartData}
+                options={barChartOptions}
+              />
+            </Grid.Column>
+          </Grid>
         </Segment>
 
       </>

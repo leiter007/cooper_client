@@ -43,9 +43,9 @@ class App extends Component {
   }
 
   handleGenderChange(value) {
-		this.setState({ gender: value})
+    this.setState({ gender: value })
   }
-  
+
   onChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
@@ -101,29 +101,29 @@ class App extends Component {
     return (
       <>
         <Container>
-            <Header as="h1">
-              <Icon name="doctor" />
-                <Header.Content>
-                  THE COOPER TEST
+          <Header as="h1">
+            <Icon name="doctor" />
+            <Header.Content>
+              THE COOPER TEST
                 </Header.Content>
-            </Header>
-            <Divider></Divider>
+          </Header>
+          <Divider></Divider>
 
-              <Message>
-                {renderLogin}
-              </Message>
-  
-            <Segment>
-              <InputFields
-                inputChangeHandler={this.onChange.bind(this)}
-                handleGenderChange={this.handleGenderChange.bind(this)}
-              />
-            </Segment>
+          <Message>
+            {renderLogin}
+          </Message>
 
-            <Divider horizontal>Wait for your physical assessment...</Divider>
-            
-            <Segment>
-              <Message color="teal">
+          <Segment>
+            <InputFields
+              inputChangeHandler={this.onChange.bind(this)}
+              handleGenderChange={this.handleGenderChange.bind(this)}
+            />
+          </Segment>
+
+          <Divider horizontal>Wait for your physical assessment...</Divider>
+
+          <Segment>
+            <Message color="teal">
               <DisplayCooperResult
                 distance={this.state.distance}
                 gender={this.state.gender}
@@ -132,11 +132,11 @@ class App extends Component {
                 entrySaved={this.state.entrySaved}
                 entryHandler={this.entryHandler.bind(this)}
               />
-              </Message>
-            </Segment>
-            
-              {performanceDataIndex}
-           
+            </Message>
+          </Segment>
+
+          {performanceDataIndex}
+
         </Container>
       </>
     );
