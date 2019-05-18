@@ -115,7 +115,7 @@ class App extends Component {
               />
             </Segment>
 
-            <Divider horizontal>Wait for you physical assessment...</Divider>
+            <Divider horizontal>Wait for your physical assessment...</Divider>
             
             <Segment>
               <Message color="teal">
