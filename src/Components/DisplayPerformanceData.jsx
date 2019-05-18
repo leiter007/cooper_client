@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getData } from '../Modules/PerformanceData';
-import { Message, Segment, Divider, Grid } from 'semantic-ui-react'
+import { Message, Segment, Divider, Grid, Header } from 'semantic-ui-react'
 import { Line, Bar } from 'react-chartjs-2';
 import moment from 'moment';
 
@@ -66,7 +66,7 @@ class DisplayPerformanceData extends Component {
       title: {
         display: true,
         text: 'Performance Status',
-        fontSize: 20
+        fontSize: 16
         },
       scales: {
         yAxes: [{
@@ -92,7 +92,7 @@ class DisplayPerformanceData extends Component {
       title: {
         display: true,
         text: 'Distance over time',
-        fontSize: 20
+        fontSize: 16
         },
       scales: {
         yAxes: [{
@@ -162,6 +162,8 @@ class DisplayPerformanceData extends Component {
         </div>
       )
 
+      
+
       perfDataLength = this.state.performanceData.length;
 
       totalM = distances.reduce(function (prev, curr) {
@@ -170,16 +172,67 @@ class DisplayPerformanceData extends Component {
       totalKLM = (totalM / 1000).toFixed(2)
     }
 
+    const bubbleStyle = { width: 200, height: 80 }
+
     return (
       <>
-        <Divider horizontal>Distance and Result log</Divider>
-        <Segment>
-          <Message>
-            {dataIndex}
-          </Message>
-        </Segment>
+        <Divider horizontal>
+          <Header as="h3">
+          RESULT DASHBOARD
+          </Header>
+        </Divider>
 
-        <Divider horizontal>You have run a total of {totalKLM} kilometers and have {perfDataLength} saved entries</Divider>
+        <Segment>
+          <Grid container columns={2}>
+            <Grid.Column>
+                <Message>
+                <Header as="h3">
+                  Result log
+                </Header>
+                <Divider></Divider>
+                  {dataIndex}
+                </Message>
+            </Grid.Column>
+
+            <Grid.Column>
+
+              <Segment>
+
+                <Header textAlign="right" as='h3'>
+                  Your total distance covered is
+                </Header>
+                  <Divider></Divider>
+                  <Segment circular inverted style={bubbleStyle} color="teal">
+                    <Header as='h1'>
+                      {totalKLM}km
+                    </Header>
+                  </Segment>
+
+                  <Header textAlign="right" as='h3'>
+                    Your total number of runs is
+                  </Header>
+                  <Divider></Divider>
+                  <Segment circular inverted style={bubbleStyle} color="teal">
+                    <Header as='h1'>
+                    {perfDataLength}
+                    </Header>
+                  </Segment>
+
+                  <Header textAlign="right" as='h3'>
+                    Your most frequent result is
+                  </Header>
+                  <Divider></Divider>
+                  <Segment circular inverted style={bubbleStyle} color="teal">
+                    <Header as='h1'>
+                    {perfDataLength}
+                    </Header>
+                  </Segment>
+
+              </Segment>
+
+            </Grid.Column>
+          </Grid>
+        </Segment>
 
         <Segment>
         <Grid container columns={2}>
