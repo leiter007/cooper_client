@@ -4,7 +4,7 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth.js';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
-import { Container, Divider, Header, Segment, Button, Message } from 'semantic-ui-react'
+import { Container, Divider, Header, Segment, Button, Message, Icon } from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
@@ -101,8 +101,13 @@ class App extends Component {
     return (
       <>
         <Container>
-            <Header as="h1" textAlign="center">THE COOPER TEST</Header>
-              <Divider></Divider>
+            <Header as="h1">
+              <Icon name="doctor" />
+                <Header.Content>
+                  THE COOPER TEST
+                </Header.Content>
+            </Header>
+            <Divider></Divider>
 
               <Message>
                 {renderLogin}

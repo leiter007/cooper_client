@@ -162,8 +162,6 @@ class DisplayPerformanceData extends Component {
         </div>
       )
 
-      
-
       perfDataLength = this.state.performanceData.length;
 
       totalM = distances.reduce(function (prev, curr) {
@@ -195,18 +193,17 @@ class DisplayPerformanceData extends Component {
             </Grid.Column>
 
             <Grid.Column>
-
               <Segment>
-
                 <Header textAlign="right" as='h3'>
                   Your total distance covered is
                 </Header>
                   <Divider></Divider>
-                  <Segment circular inverted style={bubbleStyle} color="teal">
-                    <Header as='h1'>
-                      {totalKLM}km
-                    </Header>
-                  </Segment>
+            
+                    <Segment circular inverted style={bubbleStyle} color="teal">
+                      <Header as='h1'>
+                        {totalKLM}km
+                      </Header>
+                    </Segment>
 
                   <Header textAlign="right" as='h3'>
                     Your total number of runs is
@@ -227,7 +224,6 @@ class DisplayPerformanceData extends Component {
                     {perfDataLength}
                     </Header>
                   </Segment>
-
               </Segment>
 
             </Grid.Column>
