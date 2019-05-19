@@ -22,8 +22,19 @@ const authenticateSignUp = async (email, password, passwordConfirmation) => {
     sessionStorage.setItem('current_user', JSON.stringify({ id: response.data.data.id }));
     return { authenticated: true }
   } catch (error) {
-    // debugger
     return { authenticated: false, message: error.response.data.errors.full_messages[0] }
+  }
+};
+
+const authenticateSignOut = async (email) => {
+  const path = apiUrl + '/auth/sign_out';
+  try {
+    let response = await axios.delete(path, { email: email})
+    await storeAuthCredentials(response)
+    sessionStorage.getItem('current_user', JSON.stringify({ id: response.data.data.id }));
+    return { authenticated: false}
+  } catch (error) {
+    return { authenticated: true, message: error.response.data.errors.full_messages[0] }
   }
 };
 
@@ -45,4 +56,4 @@ const storeAuthCredentials = ({ data, headers }) => {
   })
 };
 
-export { authenticate, authenticateSignUp, storeAuthCredentials }
+export { authenticate, authenticateSignUp, authenticateSignOut, storeAuthCredentials }

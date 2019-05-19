@@ -3,7 +3,7 @@ import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import SignUpForm from './Components/SignUpForm';
-import { authenticate, authenticateSignUp } from './Modules/Auth.js';
+import { authenticate, authenticateSignUp, authenticateSignOut } from './Modules/Auth.js';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import { Container, Grid, Divider, Header, Segment, Button, Message, Icon } from 'semantic-ui-react'
 
@@ -47,6 +47,16 @@ class App extends Component {
     }
   }
 
+  async onLogout(e) {
+    e.preventDefault();
+    let resp = await authenticateSignOut(this.state.email)
+    if (resp.authenticated === false) {
+      this.setState({ authenticated: false });
+    } else {
+      this.setState({ message: resp.message})
+    }
+  }
+
   entryHandler() {
     this.setState({ entrySaved: true, updateIndex: true });
   }
@@ -69,6 +79,7 @@ class App extends Component {
   render() {
     let renderLogin;
     let renderSignUp;
+    let renderLogout;
     let user;
     let performanceDataIndex;
     let errorMessage;
@@ -83,6 +94,9 @@ class App extends Component {
         <Message hidden>
           {renderSignUp}
         </Message>
+      )
+      renderLogout = (
+          <Button compact color="teal" id="logout" onClick={(e) => this.onLogout.bind(this)}>Logout</Button>
       )
 
       if (this.state.renderIndex === true) {
@@ -184,6 +198,7 @@ class App extends Component {
               </Grid.Column>
               <Grid.Column>
                 {renderSignUpMessage}
+                {renderLogout}
               </Grid.Column>
             </Grid>
             {errorMessage}
