@@ -155,7 +155,6 @@ class DisplayPerformanceData extends Component {
       barChartPerfData.push(numOfAverage);
       barChartPerfData.push(numOfBelowAverage);
       barChartPerfData.push(numOfPoor);
-      debugger
       dataIndex = (
         <div>
           {this.state.performanceData.map(item => {

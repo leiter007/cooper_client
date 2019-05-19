@@ -49,9 +49,12 @@ class App extends Component {
 
   async onLogout(e) {
     e.preventDefault();
-    let resp = await authenticateSignOut(this.state.email)
+    let resp = await authenticateSignOut()
     if (resp.authenticated === false) {
       this.setState({ authenticated: false });
+      window.sessionStorage.clear();
+      this.setState ({ message: "You have successfuly logged out"});
+      setTimeout(function () {window.location.reload("true");}, 2000);
     } else {
       this.setState({ message: resp.message})
     }
@@ -96,7 +99,7 @@ class App extends Component {
         </Message>
       )
       renderLogout = (
-          <Button compact color="teal" id="logout" onClick={(e) => this.onLogout.bind(this)}>Logout</Button>
+          <Button compact color="teal" id="logout" onClick={this.onLogout.bind(this)}>Logout</Button>
       )
 
       if (this.state.renderIndex === true) {
@@ -169,7 +172,7 @@ class App extends Component {
     }
     if (this.state.authenticated === true) {
       errorMessage = ''
-    } else if (this.state.authenticated === false && this.state.message != '') {
+    } else if (this.state.authenticated === false && this.state.message !== '') {
       errorMessage = (
         <Message color="red">
           <p><b>{this.state.message}</b></p>

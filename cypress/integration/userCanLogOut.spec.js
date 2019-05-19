@@ -9,6 +9,8 @@ describe('User can log out', () => {
     })
     cy.contains('Hi user@mail.com')
     cy.get('#logout').click();
-    cy.contains('Signed out succesfully')
+    cy.contains('You have successfuly logged out');
+    cy.contains('Login');
+    cy.contains('Sign Up');
   })
 })
