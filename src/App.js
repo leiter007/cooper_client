@@ -55,6 +55,7 @@ class App extends Component {
       window.sessionStorage.clear();
       this.setState({ message: "You have successfuly logged out." });
       this.setState({ renderLoginForm: false });
+      this.setState({ renderSignUpForm: false });
       setTimeout(function () { window.location.reload("true"); }, 2000);
     } else {
       this.setState({ message: resp.message })
