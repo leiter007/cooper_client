@@ -8,18 +8,20 @@ const LoginForm = (props) => {
       <Form.Input
         fluid
         id="email"
-        placeholder="Email" 
+        placeholder="Email"
         onChange={props.inputChangeHandler}
       />
 
       <Form.Input
         fluid
         id="password"
-        placeholder="Password" 
+        placeholder="Password"
         onChange={props.inputChangeHandler}
       />
-      
+
       <Button compact color="teal" onClick={(e) => props.loginHandler(e)} id="submit">Submit</Button>
+      <Button compact color="teal" onClick={(e) => props.resetHandler(e)}>Reset</Button>
+
     </Form>
   )
 }

@@ -27,6 +27,8 @@ const SignUpForm = (props) => {
       />
 
       <Button compact color="teal" onClick={(e) => props.signUpHandler(e)} id="submit">Submit</Button>
+      <Button compact color="teal" onClick={(e) => props.resetHandler(e)}>Reset</Button>
+
     </Form>
   )
 }

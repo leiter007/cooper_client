@@ -53,10 +53,11 @@ class App extends Component {
     if (resp.authenticated === false) {
       this.setState({ authenticated: false });
       window.sessionStorage.clear();
-      this.setState ({ message: "You have successfuly logged out"});
-      setTimeout(function () {window.location.reload("true");}, 2000);
+      this.setState({ message: "You have successfuly logged out" });
+      this.setState({ renderLoginForm: false });
+      setTimeout(function () { window.location.reload("true"); }, 2000);
     } else {
-      this.setState({ message: resp.message})
+      this.setState({ message: resp.message })
     }
   }
 
@@ -79,6 +80,10 @@ class App extends Component {
     })
   }
 
+  reset(e) {
+    window.location.reload(true);
+  }
+
   render() {
     let renderLogin;
     let renderSignUp;
@@ -99,7 +104,7 @@ class App extends Component {
         </Message>
       )
       renderLogout = (
-          <Button compact color="teal" id="logout" onClick={this.onLogout.bind(this)}>Logout</Button>
+        <Button compact color="teal" id="logout" onClick={this.onLogout.bind(this)}>Logout</Button>
       )
 
       if (this.state.renderIndex === true) {
@@ -124,6 +129,7 @@ class App extends Component {
             <LoginForm
               loginHandler={this.onLogin.bind(this)}
               inputChangeHandler={this.onChange.bind(this)}
+              resetHandler={this.reset.bind(this)}
             />
           </>
         )
@@ -145,6 +151,7 @@ class App extends Component {
           <SignUpForm
             signUpHandler={this.onSignUp.bind(this)}
             inputChangeHandler={this.onChange.bind(this)}
+            resetHandler={this.reset.bind(this)}
           />
         )
         renderSignUpMessage = (
@@ -197,12 +204,15 @@ class App extends Component {
               <Grid.Column>
                 <Message>
                   {renderLogin}
+
                 </Message>
               </Grid.Column>
               <Grid.Column>
                 {renderSignUpMessage}
+
                 {renderLogout}
               </Grid.Column>
+
             </Grid>
             {errorMessage}
           </Segment>
