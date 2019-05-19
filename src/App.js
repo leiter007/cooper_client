@@ -85,6 +85,11 @@ class App extends Component {
     window.location.reload(true);
   }
 
+  resetForm(e) {
+    this.setState({ distane: '', age: '' })
+    document.getElementById("calculationForm").reset()
+  }
+
   render() {
     let renderLogin;
     let renderSignUp;
@@ -219,6 +224,7 @@ class App extends Component {
             <InputFields
               inputChangeHandler={this.onChange.bind(this)}
               handleGenderChange={this.handleGenderChange.bind(this)}
+              resetFormState={this.resetForm.bind(this)}
             />
           </Segment>
 

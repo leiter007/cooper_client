@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Dropdown, Divider, Label } from 'semantic-ui-react'
+import { Form, Dropdown, Divider, Label, Button } from 'semantic-ui-react'
 
 const InputFields = (props) => {
   const genderOptions = [
@@ -8,7 +8,7 @@ const InputFields = (props) => {
   ]
   return (
     <>
-      <Form type="medium">
+      <Form type="medium" id="calculationForm">
         <Form.Field inline>
           <Dropdown
             selection
@@ -36,6 +36,8 @@ const InputFields = (props) => {
           onChange={props.inputChangeHandler}
         />
       </Form>
+      <br />
+      <Button compact color="teal" id="sign-up" onClick={(e) => props.resetFormState(e)}>Reset Numeric Fields</Button>
     </>
   )
 }
