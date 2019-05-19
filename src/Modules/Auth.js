@@ -22,7 +22,8 @@ const authenticateSignUp = async (email, password, passwordConfirmation) => {
     sessionStorage.setItem('current_user', JSON.stringify({ id: response.data.data.id }));
     return { authenticated: true }
   } catch (error) {
-    return { authenticated: false, message: error.response.data.errors[0] }
+    // debugger
+    return { authenticated: false, message: error.response.data.errors.full_messages[0] }
   }
 };
 
