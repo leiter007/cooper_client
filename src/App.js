@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
+import SignUpForm from './Components/SignUpForm';
 import { authenticate } from './Modules/Auth.js';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import { Container, Divider, Header, Segment, Button, Message, Icon } from 'semantic-ui-react'
@@ -18,6 +19,7 @@ class App extends Component {
       authenticated: false,
       email: '',
       password: '',
+      passwordConfirmation: '',
       message: '',
       entrySaved: false,
       renderIndex: false,
@@ -32,6 +34,16 @@ class App extends Component {
       this.setState({ authenticated: true });
     } else {
       this.setState({ message: resp.message, renderLoginForm: false })
+    }
+  }
+
+  async onSignUp(e) {
+    e.preventDefault();
+    let resp = await authenticateSignUp(this.state.email, this.state.password, this.state.passwordConfirmation)
+    if (resp.authenticated === true) {
+      this.setState({ authenticated: true });
+    } else {
+      this.setState({ message: resp.message, renderSignUpForm: false })
     }
   }
 
@@ -96,26 +108,24 @@ class App extends Component {
       } else if (this.state.renderLoginForm === false && this.state.renderSignUpForm === true) {
         renderLogin = (
           <>
-          <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
+            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
           </>
         )
-        // renderSignUp = (
-        //   <SignUpForm
-          // loginHandler={this.onLogin.bind(this)}
-          // inputChangeHandler={this.onChange.bind(this)}
-        // />
-        // )
+        renderSignUp = (
+          <SignUpForm
+            signUpHandler={this.onSignUp.bind(this)}
+            inputChangeHandler={this.onChange.bind(this)}
+          />
+        )
       } else {
         renderLogin = (
           <>
             <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
-            <p>{this.state.message}</p>
           </>
         )
         renderSignUp = (
           <>
             <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true })}>Sign Up</Button>
-            <p>{this.state.message}</p>
           </>
         )
       }
@@ -130,6 +140,7 @@ class App extends Component {
               THE COOPER TEST
                 </Header.Content>
           </Header>
+
           <Divider></Divider>
 
           <Message>
@@ -138,6 +149,10 @@ class App extends Component {
 
           <Message>
             {renderSignUp}
+          </Message>
+
+          <Message>
+            <p>{this.state.message}</p>
           </Message>
 
           <Segment>

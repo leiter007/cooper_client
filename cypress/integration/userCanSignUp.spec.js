@@ -5,7 +5,7 @@ describe('User can sign up', () => {
     cy.get('#sign-up-form').within(() => {
       cy.get('#email').type('user2@mail.com')
       cy.get('#password').type('password2')
-      cy.get('#password-confirmation').type('password2')
+      cy.get('#passwordConfirmation').type('password2')
       cy.get('button').click()
     })
     cy.contains('Hi user2@mail.com')
