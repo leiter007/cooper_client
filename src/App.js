@@ -103,12 +103,12 @@ class App extends Component {
           </>
         )
         renderSignUp = (
-          <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true })}>Sign Up</Button>
+          <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true, renderLoginForm: false })}>Sign Up</Button>
         )
       } else if (this.state.renderLoginForm === false && this.state.renderSignUpForm === true) {
         renderLogin = (
           <>
-            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
+            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true, renderSignUpForm: false })}>Login</Button>
           </>
         )
         renderSignUp = (
@@ -120,12 +120,12 @@ class App extends Component {
       } else {
         renderLogin = (
           <>
-            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
+            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true, renderSignUpForm: false })}>Login</Button>
           </>
         )
         renderSignUp = (
           <>
-            <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true })}>Sign Up</Button>
+            <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true, renderLoginForm: false })}>Sign Up</Button>
           </>
         )
       }

@@ -155,7 +155,7 @@ class DisplayPerformanceData extends Component {
       barChartPerfData.push(numOfAverage);
       barChartPerfData.push(numOfBelowAverage);
       barChartPerfData.push(numOfPoor);
-
+      debugger
       dataIndex = (
         <div>
           {this.state.performanceData.map(item => {
@@ -166,13 +166,19 @@ class DisplayPerformanceData extends Component {
 
       perfDataLength = this.state.performanceData.length;
 
-      totalM = distances.reduce(function (prev, curr) {
-        return (Number(prev) || 0) + (Number(curr) || 0);
-      });
-      totalKLM = (totalM / 1000).toFixed(2)
+      if (distances.length === 0) {
+        totalKLM = 0
+      } else {
+        totalM = distances.reduce(function (prev, curr) {
+          return (Number(prev) || 0) + (Number(curr) || 0);
+        });
+        totalKLM = (totalM / 1000).toFixed(2)
+      }
 
       mostFrequentPerfIndex = barChartPerfData.indexOf(Math.max(...barChartPerfData))
-      if (mostFrequentPerfIndex === 0) {
+      if (distances.length === 0 && mostFrequentPerfIndex === 0) {
+        mostFrequentPerformance = "still to be discovered"
+      } else if (mostFrequentPerfIndex === 0) {
         mostFrequentPerformance = "Excellent"
       } else if (mostFrequentPerfIndex === 1) {
         mostFrequentPerformance = "Above Average"
@@ -183,9 +189,8 @@ class DisplayPerformanceData extends Component {
       } else if (mostFrequentPerfIndex === 4) {
         mostFrequentPerformance = "Poor"
       } else {
-        mostFrequentPerformance = "is still to be discovered"
+        mostFrequentPerformance = ""
       }
-
     }
 
     const bubbleStyle = { width: 200, height: 80 }

@@ -1,4 +1,7 @@
 describe('User can sign up', () => {
+  // This particular it block will fail. because the test hits the Heroku server
+  // the API is deployed. Which means that user2@mail.com already exists. You can change lines 8-10 & 14
+  // with other credentials to verify the functionality of new user sign up.
   it('succesfully', () => {
     cy.visit('http://localhost:3001');
     cy.get('#sign-up').click();
