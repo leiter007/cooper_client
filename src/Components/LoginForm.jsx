@@ -14,6 +14,7 @@ const LoginForm = (props) => {
 
       <Form.Input
         fluid
+        type="password"
         id="password"
         placeholder="Password"
         onChange={props.inputChangeHandler}
