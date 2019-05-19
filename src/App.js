@@ -211,7 +211,6 @@ class App extends Component {
                 {renderSignUpMessage}
                 {renderLogout}
               </Grid.Column>
-
             </Grid>
             {errorMessage}
           </Segment>
