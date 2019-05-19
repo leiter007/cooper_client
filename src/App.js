@@ -5,7 +5,7 @@ import LoginForm from './Components/LoginForm';
 import SignUpForm from './Components/SignUpForm';
 import { authenticate, authenticateSignUp } from './Modules/Auth.js';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
-import { Container, Divider, Header, Segment, Button, Message, Icon } from 'semantic-ui-react'
+import { Container, Grid, Divider, Header, Segment, Button, Message, Icon } from 'semantic-ui-react'
 
 class App extends Component {
   constructor(props) {
@@ -71,6 +71,7 @@ class App extends Component {
     let renderSignUp;
     let user;
     let performanceDataIndex;
+    let errorMessage;
 
     if (this.state.authenticated === true) {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid;
@@ -131,6 +132,16 @@ class App extends Component {
       }
     }
 
+    if (this.state.authenticated === true) {
+      errorMessage = ''
+    } else if (this.state.authenticated === false && this.state.message != '') {
+      errorMessage = (
+      <Message>
+        <p>{this.state.message}</p>
+      </Message>
+      )
+    }
+
     return (
       <>
         <Container>
@@ -143,17 +154,21 @@ class App extends Component {
 
           <Divider></Divider>
 
-          <Message>
-            {renderLogin}
-          </Message>
-
-          <Message>
-            {renderSignUp}
-          </Message>
-
-          <Message>
-            <p>{this.state.message}</p>
-          </Message>
+          <Segment>
+            <Grid container columns={2}>
+              <Grid.Column>
+                <Message>
+                {renderLogin}
+                </Message>
+              </Grid.Column>
+              <Grid.Column>
+                <Message>
+                {renderSignUp}
+                </Message>
+              </Grid.Column>
+            </Grid>
+                {errorMessage}
+          </Segment>
 
           <Segment>
             <InputFields
