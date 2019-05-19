@@ -29,6 +29,10 @@ For the pusrposes of this project we built a backend API solution using Ruby on 
 * The API was deployed using Heroku. The link to access it is [here](https://cooper-felix-george.herokuapp.com/). Since this is only an API interface there are no views. So when you hit the link above do not expect to see something in your browser.
 * The CLIENT was deployed via Netlify. You can visit it [here](https://cooper-felix-george.netlify.com/). This is where everything happens.
 
+You can use the following credentials if you want to see the application in full action.
+* email: *user@mail.com*
+* password: *password*
+
 Please be patient while the client loads. Since both services are hosted on free servers, the speed is not as instant as you might be used to.
 
 # Prerequisites

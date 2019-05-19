@@ -53,7 +53,7 @@ class App extends Component {
     if (resp.authenticated === false) {
       this.setState({ authenticated: false });
       window.sessionStorage.clear();
-      this.setState({ message: "You have successfuly logged out" });
+      this.setState({ message: "You have successfuly logged out." });
       this.setState({ renderLoginForm: false });
       setTimeout(function () { window.location.reload("true"); }, 2000);
     } else {
@@ -204,12 +204,10 @@ class App extends Component {
               <Grid.Column>
                 <Message>
                   {renderLogin}
-
                 </Message>
               </Grid.Column>
               <Grid.Column>
                 {renderSignUpMessage}
-
                 {renderLogout}
               </Grid.Column>
 
