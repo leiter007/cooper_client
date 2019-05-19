@@ -3,7 +3,7 @@ import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import SignUpForm from './Components/SignUpForm';
-import { authenticate } from './Modules/Auth.js';
+import { authenticate, authenticateSignUp } from './Modules/Auth.js';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import { Container, Divider, Header, Segment, Button, Message, Icon } from 'semantic-ui-react'
 
