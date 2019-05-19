@@ -20,7 +20,7 @@ describe('User attempts to view his/her performance data', () => {
     cy.get('#login-form').within(() => {
       cy.get('#email').type('user@mail.com')
       cy.get('#password').type('password')
-      cy.get('button').click()
+      cy.get('#submit').click()
     })
   });
 

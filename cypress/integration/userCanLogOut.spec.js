@@ -5,7 +5,7 @@ describe('User can log out', () => {
     cy.get('#login-form').within(() => {
       cy.get('#email').type('user@mail.com')
       cy.get('#password').type('password')
-      cy.get('button').click()
+      cy.get('#submit').click()
     })
     cy.contains('Hi user@mail.com')
     cy.get('#logout').click();

@@ -14,7 +14,7 @@ describe('User can log in', () => {
     cy.get('#login-form').within(() => {
       cy.get('#email').type('user@mail.com')
       cy.get('#password').type('password')
-      cy.get('button').click()
+      cy.get('#submit').click()
     })
     cy.contains('Hi user@mail.com')
   })
@@ -32,7 +32,7 @@ describe('User can log in', () => {
     cy.get('#login-form').within(() => {
       cy.get('#email').type('user@mail.com')
       cy.get('#password').type('wrongpassword')
-      cy.get('button').click()
+      cy.get('#submit').click()
     })
     cy.contains('Invalid login credentials. Please try again.')
   })
