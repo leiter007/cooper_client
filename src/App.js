@@ -14,6 +14,7 @@ class App extends Component {
       gender: 'female',
       age: '',
       renderLoginForm: false,
+      renderSignUpForm: false,
       authenticated: false,
       email: '',
       password: '',
@@ -55,6 +56,7 @@ class App extends Component {
 
   render() {
     let renderLogin;
+    let renderSignUp;
     let user;
     let performanceDataIndex;
 
@@ -79,7 +81,7 @@ class App extends Component {
         )
       }
     } else {
-      if (this.state.renderLoginForm === true) {
+      if (this.state.renderLoginForm === true && this.state.renderSignUpForm === false) {
         renderLogin = (
           <>
             <LoginForm
@@ -88,10 +90,31 @@ class App extends Component {
             />
           </>
         )
+        renderSignUp = (
+          <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true })}>Sign Up</Button>
+        )
+      } else if (this.state.renderLoginForm === false && this.state.renderSignUpForm === true) {
+        renderLogin = (
+          <>
+          <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
+          </>
+        )
+        // renderSignUp = (
+        //   <SignUpForm
+          // loginHandler={this.onLogin.bind(this)}
+          // inputChangeHandler={this.onChange.bind(this)}
+        // />
+        // )
       } else {
         renderLogin = (
           <>
             <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</Button>
+            <p>{this.state.message}</p>
+          </>
+        )
+        renderSignUp = (
+          <>
+            <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true })}>Sign Up</Button>
             <p>{this.state.message}</p>
           </>
         )
@@ -111,6 +134,10 @@ class App extends Component {
 
           <Message>
             {renderLogin}
+          </Message>
+
+          <Message>
+            {renderSignUp}
           </Message>
 
           <Segment>
