@@ -72,12 +72,19 @@ class App extends Component {
     let user;
     let performanceDataIndex;
     let errorMessage;
+    let renderSignUpMessage;
 
     if (this.state.authenticated === true) {
       user = JSON.parse(sessionStorage.getItem('credentials')).uid;
       renderLogin = (
-        <p>Hi {user}</p>
+        <p><b>Hi {user}</b></p>
       )
+      renderSignUpMessage = (
+        <Message hidden>
+          {renderSignUp}
+        </Message>
+      )
+
       if (this.state.renderIndex === true) {
         performanceDataIndex = (
           <>
@@ -104,12 +111,17 @@ class App extends Component {
           </>
         )
         renderSignUp = (
-          <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true, renderLoginForm: false })}>Sign Up</Button>
+          <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true, renderLoginForm: false, message: '' })}>Sign Up</Button>
+        )
+        renderSignUpMessage = (
+          <Message>
+            {renderSignUp}
+          </Message>
         )
       } else if (this.state.renderLoginForm === false && this.state.renderSignUpForm === true) {
         renderLogin = (
           <>
-            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true, renderSignUpForm: false })}>Login</Button>
+            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true, renderSignUpForm: false, message: '' })}>Login</Button>
           </>
         )
         renderSignUp = (
@@ -118,27 +130,36 @@ class App extends Component {
             inputChangeHandler={this.onChange.bind(this)}
           />
         )
+        renderSignUpMessage = (
+          <Message>
+            {renderSignUp}
+          </Message>
+        )
       } else {
         renderLogin = (
           <>
-            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true, renderSignUpForm: false })}>Login</Button>
+            <Button compact color="teal" id="login" onClick={() => this.setState({ renderLoginForm: true, renderSignUpForm: false, message: '' })}>Login</Button>
           </>
         )
         renderSignUp = (
           <>
-            <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true, renderLoginForm: false })}>Sign Up</Button>
+            <Button compact color="teal" id="sign-up" onClick={() => this.setState({ renderSignUpForm: true, renderLoginForm: false, message: '' })}>Sign Up</Button>
           </>
+        )
+        renderSignUpMessage = (
+          <Message>
+            {renderSignUp}
+          </Message>
         )
       }
     }
-
     if (this.state.authenticated === true) {
       errorMessage = ''
     } else if (this.state.authenticated === false && this.state.message != '') {
       errorMessage = (
-      <Message>
-        <p>{this.state.message}</p>
-      </Message>
+        <Message color="red">
+          <p><b>{this.state.message}</b></p>
+        </Message>
       )
     }
 
@@ -158,16 +179,14 @@ class App extends Component {
             <Grid container columns={2}>
               <Grid.Column>
                 <Message>
-                {renderLogin}
+                  {renderLogin}
                 </Message>
               </Grid.Column>
               <Grid.Column>
-                <Message>
-                {renderSignUp}
-                </Message>
+                {renderSignUpMessage}
               </Grid.Column>
             </Grid>
-                {errorMessage}
+            {errorMessage}
           </Segment>
 
           <Segment>
