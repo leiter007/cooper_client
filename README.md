@@ -74,3 +74,7 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) li
 
 * [PurpleBooth](https://github.com/PurpleBooth) for this README template.
 * **[Zane](https://github.com/zanenkn)** and **[Carla](https://github.com/Carrosen)** for showing us how to complete the logout functionality.
+
+# Screenshots
+
+![Dashboard](https://user-images.githubusercontent.com/48205436/58003808-e33a7480-7ae1-11e9-8207-332acf5b2762.png)
