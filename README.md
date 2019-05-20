@@ -78,3 +78,5 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) li
 # Screenshots
 
 ![Dashboard](https://user-images.githubusercontent.com/48205436/58003808-e33a7480-7ae1-11e9-8207-332acf5b2762.png)
+![Bar_chart](https://user-images.githubusercontent.com/48205436/58003961-4af0bf80-7ae2-11e9-9467-41ad0d9f66d3.png)
+![Line_chart](https://user-images.githubusercontent.com/48205436/58003990-5e9c2600-7ae2-11e9-8834-83541c951a37.png)
